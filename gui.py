@@ -19,7 +19,7 @@ class MainThread(QThread):
         self.words = words
 
     def run(self):
-        res = bing.BingDictList(self.words)
+        res = bing.QueryList(self.words)
         self.search_finished_signal.emit(res)
 
 

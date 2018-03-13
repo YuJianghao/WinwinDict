@@ -6,7 +6,7 @@ def GetUrl(word):
     return "https://cn.bing.com/dict/search?q=" + str(word)
 
 
-def BingDict(word):
+def Query(word):
     res = requests.get("https://cn.bing.com/dict/search?q=" + str(word))
     soup = BeautifulSoup(res.text, "html.parser")
 
@@ -29,7 +29,7 @@ def BingDict(word):
     return res
 
 
-def BingDictList(words, f=print):
+def QueryList(words, f=print):
     lines = ''
     for word_ in words:
         word = word_.strip()
@@ -37,7 +37,7 @@ def BingDictList(words, f=print):
             continue
         f(word)
         try:
-            res = BingDict(word)
+            res = Query(word)
             line = '<tr><td>'
             line += res['word']
             line += '</td><td>'
